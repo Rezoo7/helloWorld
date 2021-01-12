@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        jdk 'jdk-11'
+        jdk 'jdk11'
     }
     parameters {
         booleanParam(name: "Perform release ?", description: '', defaultValue: false)
