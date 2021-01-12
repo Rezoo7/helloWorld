@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 configFileProvider([configFile(fileId: '49dd48d9-6105-40d5-bc6f-d3db4782035d', variable: 'MAVEN_GLOBAL_SETTINGS')]) {
-                    sh 'mvn -gs %MAVEN_GLOBAL_SETTINGS% deploy'
+                    bat 'mvn -gs %MAVEN_GLOBAL_SETTINGS% deploy'
                 }
             }
         }
