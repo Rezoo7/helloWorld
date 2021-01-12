@@ -37,9 +37,7 @@ pipeline {
         stage('Release') {
         when { expression { params['Perform release ?']} }
             steps {
-                script{
-                    pom = readMavenPom file: 'pom.xml'
-                }
+                
             withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){
                 bat 'git config --global user.email "maxime.guigourez@gmail.com"'
                 bat 'git config --global user.name "MaximeG"'
