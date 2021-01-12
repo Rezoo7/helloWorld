@@ -41,8 +41,8 @@ pipeline {
                     pom = readMavenPom file: 'pom.xml'
                 }
             withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){
-                bat 'git config --global user.email "you@example.com"'
-                bat 'git config --global user.name "Test"'
+                bat 'git config --global user.email "maxime.guigourez@gmail.com"'
+                bat 'git config --global user.name "MaximeG"'
                 bat 'git branch release/'+pom.version.replace("-SNAPSHOT","")
                 bat 'git push origin release/'+pom.version.replace("-SNAPSHOT","")
                 bat 'mvn release:prepare -s C:/Users/Majid/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
