@@ -38,7 +38,7 @@ pipeline {
         when { expression { params['Perform release ?']} }
             steps {
                 
-            withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){
+            withCredentials([usernamePassword(credentialsId: '018cfcdb-7b54-40f2-9461-9d89e4476116', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){
                 bat 'git config --global user.email "maxime.guigourez@gmail.com"'
                 bat 'git config --global user.name "MaximeG"'
                 bat 'git branch release/'+pom.version.replace("-SNAPSHOT","")
