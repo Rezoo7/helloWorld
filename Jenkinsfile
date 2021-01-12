@@ -1,22 +1,30 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+        jdk 'jdk-11'
+    }
+    parameters {
+        booleanParam(name: "Perform release ?", description: '', defaultValue: false)
+    }
     stages {
-        stage('Build') {
+        stage('Initialize'){
             steps {
-                bat 'mvn compile'
+                bat '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    '''
             }
         }
-        stage('Test') {
-            steps {
-                bat 'mvn test'
+            stage('Build') {
+                steps {
+                    bat 'mvn compile'
+                }
             }
-
-        }
-    stage('Deploy') {
-            steps {
-                bat 'mvn deploy'
+            stage('Test') {
+                steps {
+                    bat 'mvn test'
+                }
             }
-
-        }
     }
 }
