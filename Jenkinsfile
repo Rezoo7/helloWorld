@@ -41,7 +41,7 @@ pipeline {
             withCredentials([usernamePassword(credentialsId: '018cfcdb-7b54-40f2-9461-9d89e4476116', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){
                 bat 'git config --global user.email "maxime.guigourez@gmail.com"'
                 bat 'git config --global user.name "MaximeG"'
-                bat 'version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
+                bat 'set version="$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"'
                 bat 'git branch release/'+pom.version.replace("-SNAPSHOT","")
                 bat 'git push origin release/'+pom.version.replace("-SNAPSHOT","")
                 bat 'mvn release:prepare -s C:/Users/Majid/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
